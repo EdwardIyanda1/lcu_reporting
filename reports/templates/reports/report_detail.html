@@ -1,0 +1,45 @@
+{% extends "reports/base.html" %}
+{% load static %}
+
+{% block content %}
+<div id="report-detail-page" class="page active">
+    <header>
+        <div class="logo-container">
+            <img src="{% static 'images/lcu_logo.png' %}" alt="LCU Logo" class="logo">
+            <h1>Report Details</h1>
+        </div>
+        <a href="{% url 'admin_dashboard' %}" class="btn secondary-btn">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </header>
+    
+    <main>
+        <div class="report-detail-card">
+            <h2>Report #{{ report.id }}</h2>
+            
+            <div class="report-detail-section">
+                <h3><i class="fas fa-info-circle"></i> Basic Information</h3>
+                <p><strong>Student ID:</strong> {{ report.student_id }}</p>
+                {% if report.full_name %}<p><strong>Name:</strong> {{ report.full_name }}</p>{% endif %}
+                <p><strong>Category:</strong> {{ report.category }}</p>
+                <p><strong>Date of Incident:</strong> {{ report.date_of_incident|date:"M d, Y" }}</p>
+                <p><strong>Submitted:</strong> {{ report.timestamp|date:"M d, Y H:i" }}</p>
+                {% if report.contact_info %}<p><strong>Contact Info:</strong> {{ report.contact_info }}</p>{% endif %}
+            </div>
+            
+            <div class="report-detail-section">
+                <h3><i class="fas fa-align-left"></i> Description</h3>
+                <div class="description-content">
+                    {{ report.description|linebreaks }}
+                </div>
+            </div>
+            
+            <div class="report-actions">
+                <button class="delete-btn" data-report-id="{{ report.id }}">
+                    <i class="fas fa-trash"></i> Delete Report
+                </button>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "reports/base.html" %}
+{% load static %}
+
+{% block content %}
+<div id="home-page" class="page active">
+    <header>
+        <div class="logo-container">
+            <img src="{% static 'images/lcu_logo.png' %}" alt="LCU Logo" class="logo">
+            <h1>Lead City University</h1>
+        </div>
+        <p class="tagline">Confidential Reporting Platform</p>
+    </header>
+    
+    <main>
+        <div class="welcome-card">
+            <h2>Report with Confidence</h2>
+            <p>This secure platform allows LCU students to report incidents of harassment, discrimination, or safety concerns anonymously or with your details.</p>
+            <p>Your voice matters in making our campus safer for everyone.</p>
+            
+            <a href="{% url 'report_form' %}" id="report-btn" class="btn primary-btn">
+                <i class="fas fa-exclamation-circle"></i> Report an Issue
+            </a>
+        </div>
+        
+        <div class="admin-link-container">
+            <a href="{% url 'admin_login' %}" id="admin-link">Admin Login</a>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© {% now "Y" %} Lead City University. All rights reserved.</p>
+        <p class="disclaimer">Note: this is a work in progress.</p>
+    </footer>
+</div>
+{% endblock %}
