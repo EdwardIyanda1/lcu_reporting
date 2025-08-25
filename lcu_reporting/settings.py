@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ["127.0.0.1", "localhost", "lcu-reporting.onrender.com"]
 INSTALLED_APPS = [
      'django.contrib.admin',
     'django.contrib.auth',
+    "whitenoise.runserver_nostatic",
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -47,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -136,3 +138,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 LOGIN_URL = '/admin/login/'
 LOGIN_REDIRECT_URL = '/admin/dashboard/'
+STATICFILES_DIRS = [BASE_DIR / "static"]  # your app’s static/ folder
+STATIC_ROOT = BASE_DIR / "staticfiles"    # for collectstatic
